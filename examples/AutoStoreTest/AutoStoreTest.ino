@@ -17,7 +17,10 @@
  * along with Arduino-MC47xxx. If not, see <http://www.gnu.org/licenses/>.     *
  *******************************************************************************
  *
- * This example tests that the autostore functionality is working properly.
+ * This example tests that the Auto-Store functionality is working properly.
+ *
+ * Note that for this to work properly, you must place a 10 uF capacitor on the
+ * Vcap pin!
  *
  * WARNING: THIS TEST WILL OVERWRITE THE WHOLE CONTENTS OF YOUR EERAM!
  */

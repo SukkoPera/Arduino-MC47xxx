@@ -17,7 +17,10 @@
  * along with Arduino-MC47xxx. If not, see <http://www.gnu.org/licenses/>.     *
  *******************************************************************************
  *
- * This examples clears the Status Register
+ * This examples clears the Status Register. This will have a number of effects:
+ * - The Event Received flag is cleared
+ * - Auto-Store functionality will be disabled
+ * - Write Protection is disabled for the whole address space
  */
 
 #include <MC47xxx.h>

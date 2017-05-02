@@ -17,7 +17,7 @@
  * along with Arduino-MC47xxx. If not, see <http://www.gnu.org/licenses/>.     *
  *******************************************************************************
  *
- * This example clears your whole EERAM.
+ * This example clears your whole EERAM, including EEPROM contents.
  *
  * WARNING: THIS TEST WILL OVERWRITE THE WHOLE CONTENTS OF YOUR EERAM!
  */
@@ -53,6 +53,7 @@ void setup () {
 		halt ();
 	}
 
+	// 1. Clear RAM
 	Serial.println ("--- CLEARING ---");
 	for (word i = 0; i < RAM_SIZE; i++) {
 		if (!ram.write (i, CLEAR_VALUE)) {
@@ -63,6 +64,7 @@ void setup () {
 		}
 	}
 
+	// 2. Make sure everything is clear
 	Serial.println ("\n--- VERIFYING ---");
 	for (word i = 0; i < RAM_SIZE; i++) {
 		byte v;
@@ -77,6 +79,13 @@ void setup () {
 				halt ();
 			}
 		}
+	}
+
+	// 3. Store to EEPROM so that it gets cleared as well
+	Serial.println ("\n--- STORING ---");
+	if (!ram.store ()) {
+		Serial.println ("Store failed");
+		halt ();
 	}
 
 	Serial.println ("\nCLEARING COMPLETE!");
